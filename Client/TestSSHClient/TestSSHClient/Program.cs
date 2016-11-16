@@ -17,8 +17,19 @@ namespace TestSSHClient
             string iIP = ConfigurationManager.AppSettings["IP"];
             string iUser = ConfigurationManager.AppSettings["User"];
             string iPassword = ConfigurationManager.AppSettings["Password"];
+            string ifilename = "test";
+            string storageaccount = ConfigurationManager.AppSettings["storageaccount"];
+            string storagekey = ConfigurationManager.AppSettings["storagekey"];
+
             Guid g = Guid.NewGuid();
-            string activatecmd = string.Format("/home/lkmsft/connector/activate.sh {0} {1} '{2}'","/home/lkmsft/connector/testffmpeg/testffmpeg.sh", g,"https://www.wowza.com/downloads/images/Butterfly_HD_1080p.mp4");
+            string activatecmd = string.Format(
+                "/home/lkmsft/connector/activate.sh {0} {1} '{2}' '{3}' '{4}' '{5}' ",
+                "/home/lkmsft/connector/testffmpeg/testffmpeg.sh", 
+                g,
+                "https://www.wowza.com/downloads/images/Butterfly_HD_1080p.mp4",
+                ifilename,
+                storageaccount,
+                storagekey);
             SshCommand rt;
 
             Console.WriteLine("process id" + g.ToString());
