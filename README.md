@@ -16,3 +16,5 @@ include the external process/application as a part of the workflow.  I have a .n
   
 
 [![N|Solid](https://github.com/lukhand/Avmconnector/blob/master/Diagram.PNG)](https://github.com/lukhand/Avmconnector/blob/master/Diagram.PNG)
+
+In order to replace or add additional process to run one needs to add the process script as identified on the orange box above.  
