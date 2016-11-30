@@ -11,6 +11,8 @@ include the external process/application as a part of the workflow.  I have a .n
   
   >b. Wait while the process is running.
   
-  >c. Clean up when the process is complete.  
+  >c. Clean up when the process is complete. 
+  
+  
 
 [![N|Solid](https://github.com/lukhand/Avmconnector/blob/master/Diagram.PNG)](https://github.com/lukhand/Avmconnector/blob/master/Diagram.PNG)
