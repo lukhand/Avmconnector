@@ -7,6 +7,8 @@ The code base is devided into two parts.
 include the external process/application as a part of the workflow.  I have a .net C# project sample here but you can chose the language of your choice.
 
 2.  The second part are the bash scripts follows the pattern of 
-  >a.  Calling activate script which then will run the desired script for the specific process of the software we need to run. (in the current example a FFMPEG transcoder running transcode command on FFMPEG.  
+  >a.  Calling activate script which then will run the desired script for the specific process of the software we need to run. (in the current example a FFMPEG transcoder running transcode command on FFMPEG.
+  >b. Wait while the process is running.
+  >c. Clean up when the process is complete.  
 
 [![N|Solid](https://github.com/lukhand/Avmconnector/blob/master/Diagram.PNG)](https://github.com/lukhand/Avmconnector/blob/master/Diagram.PNG)
