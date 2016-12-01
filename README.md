@@ -24,7 +24,7 @@ In order to replace or add additional process to run one needs to add the proces
 
 parameters:
 
-1. Scriptname - Scriptname to execute
+1. Scriptname - custom Script to execute. (in this case FFMPEG.sh)
 2. The processID in the form of a guid.
 3. The paramaters (if needed-can be blank)
 
