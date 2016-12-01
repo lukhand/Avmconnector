@@ -17,3 +17,56 @@ include the external process/application as a part of the workflow.  I have a .n
 [![N|Solid](https://github.com/lukhand/Avmconnector/blob/master/Diagram.PNG)](https://github.com/lukhand/Avmconnector/blob/master/Diagram.PNG)
 
 In order to replace or add additional process to run one needs to add the process script as identified on the orange box above.  
+
+##Server Side Scripts:
+
+###Activate.sh:
+
+parameters:
+
+1. Scriptname - Scriptname to execute
+2. The processID in the form of a guid.
+3. The paramaters (if needed-can be blank)
+
+Returns: 
+Nothing
+
+ - This script receives the custom script name to execute and also parameters that needs to be passed. You dont need to alter this script as this is the main that calls the actual scripts to be executed (like FFMPEG.sh).   
+ - This process also creates a temporary folder with the name of the processID to store all the temporary files (input/output file etc) and also the value of the status of the process (0 for running, 1 for success, 2 for fail)
+  
+
+###Wait.sh
+
+Parameters:
+
+1. Transaction ID
+
+Returns
+
+	0 if the custom script is still running
+	1 if custom script finished with error
+	2 if custom script finished with success
+
+Wait is the script that the tells the client the status of the process that was invoked by the client.  
+
+###Clean.sh
+
+ remove the directory and all the temporary information that was created by Activate.sh.  
+
+
+##SAMPLE CUSTOM SCRIPT::
+
+###FFMPEG.sh
+
+ Input
+  1. ProcessID (Mandatory)
+  2. url - http video(to be transcoded)location. (Like blob sas url)
+
+This script pulls the original video into the temporary folder and then executes trancode job to multi-bitrate outputs. After the transcoding is finished it uploads the output videos to BLOB storage.  
+	
+
+###NOTE when creating your own custom script(s)....
+
+1.  Always follow the format of putting the process ID as the first parameter.
+2.  All infromation that this script creates should be stored inside the temporaty folder created by Activate.sh.  	 
+3.  Always put echo "0" >> ./result.code at the end of the script if the execution is successful.  
