@@ -70,3 +70,35 @@ This script pulls the original video into the temporary folder and then executes
 1.  Always follow the format of putting the process ID as the first parameter.
 2.  All infromation that this script creates should be stored inside the temporaty folder created by Activate.sh.  	 
 3.  Always put echo "0" >> ./result.code at the end of the script if the execution is successful.  
+
+## Client side
+The client is an example of how you can create a client side code to communicate with the VM Connector scripts.  In this example the client is calling the custom script (FFMPEG.sh) to execute a video file to be transcoded to multiple bitrates. 
+
+The client has the following parts. 
+
+### app.config
+
+we use SSH to connect to the linux machine. We need the following to connect using ssh.
+
+    IP value="put vm ip or DNS name here"/>
+    User value= put username for VM here"/>
+    Password value="put vm password here"/>
+
+We used a Azure Storage account for the source and destination of the video files.  we need the storage account name and the key to connect to the storage account.  
+
+    storageaccount value="Put storage account name"/>
+    storagekey value="Put storage key name here"/>
+
+
+### Program.cs
+
+This is the main class for the console application that 
+
+	1. Creates a new guid (which will be then used as the processID) 
+	2. connects to the linux VM using ssh (IP, username and password)
+	3. runs commands
+		a. activate.sh with parameter
+			i. guid (the process ID)
+			ii.script name (which is FFMPEG in this case) + variables (sourcelocation of the input video, prefix of the filename for the output file, storage account name, Storage account Key)
+		b. loops through to run wait and checks for the return value
+			if it receives 0 it continues and breaks if it receives 1(error) or 2(success) and runs clean cmd. 
