@@ -54,7 +54,7 @@ Wait is the script that the tells the client the status of the process that was 
  remove the directory and all the temporary information that was created by Activate.sh.  
 
 
-##SAMPLE CUSTOM SCRIPT::
+##SAMPLE CUSTOM SCRIPT:
 
 ###FFMPEG.sh
 
