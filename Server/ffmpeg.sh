@@ -14,7 +14,7 @@
 #   5. Storageaccountkey.
 # Returns:
 #   None
-#######################################
+########################################
 
 # Capture starting transcoding time.
 START=$(date +%s)

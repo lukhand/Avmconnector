@@ -9,7 +9,7 @@
 #   0 if still running
 #   1.if error
 #   2.if succesfull
-#######################################
+########################################
 
 # change to the right director
 cd $1

@@ -10,7 +10,7 @@
 #   3. The parameters to be passed to the script.  
 # Returns:
 #   None
-#######################################
+########################################
 
 # create a directory with the name of the transaction id(GUID)
 mkdir $2
